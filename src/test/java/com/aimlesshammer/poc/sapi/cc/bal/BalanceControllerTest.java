@@ -20,7 +20,7 @@ public class BalanceControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void itGetAllBalancesFromSapiService() throws Exception {
+    public void returnsTheCreditCardBalanceObject() throws Exception {
         mvc.perform(get("/customer/10101010/balance"))
                 .andDo(print())
                 .andExpect(status().isOk())
