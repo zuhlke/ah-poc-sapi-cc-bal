@@ -1,4 +1,4 @@
-package com.aimlesshammer.pocpapispringboot;
+package com.aimlesshammer.poc.sapi.cc.bal;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
