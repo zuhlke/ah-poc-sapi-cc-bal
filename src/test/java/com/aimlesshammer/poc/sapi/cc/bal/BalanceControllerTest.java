@@ -10,8 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BalanceController.class)
@@ -25,6 +24,7 @@ public class BalanceControllerTest {
         mvc.perform(get("/customer/10101010/balance"))
                 .andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(header().string("Content-Type", "application/json;charset=UTF-8"))
                 .andExpect(content().string(equalTo("[\n" +
                         "  {\n" +
                         "    \"customerId\": \"10101010\",\n" +

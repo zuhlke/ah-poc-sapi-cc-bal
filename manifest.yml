@@ -2,4 +2,4 @@
 applications:
 - name: ah-poc-sapi-cc-bal
   memory: 768M
-  path: target/ah-poc-sapi-cc-bal-0.0.1-SNAPSHOT.jar
+  path: target/poc-sapi-cc-bal-0.0.1-SNAPSHOT.jar
