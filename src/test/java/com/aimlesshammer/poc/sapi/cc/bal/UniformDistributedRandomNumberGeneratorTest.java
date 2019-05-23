@@ -9,13 +9,13 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 
 public class UniformDistributedRandomNumberGeneratorTest {
-    // Forgive me for I am lazy
+    // Forgive me
     // - Rob
     @Test
     public void generatesNumberWithAVeryApproximatelyUniformDistribution() {
         UniformDistributedRandomNumberGenerator uniformDistributedRandomNumberGenerator = new UniformDistributedRandomNumberGenerator();
         HashMap<Integer, Integer> buckets = new HashMap<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i < 101; i++) {
             buckets.put(i, 0);
         }
 
@@ -26,11 +26,11 @@ public class UniformDistributedRandomNumberGeneratorTest {
         }
 
         // Numbers 0-99 with 10K tries => Should be approximately 100 entries in each bucket
-        // Lets go with asserting that there's between 80-120 in each
+        // Lets go with asserting that there's between 65-135 in each
         // This has not been an exercise in science.
-        for (int i = 0; i < 100; i++) {
-            assertThat(buckets.get(i), lessThan(130));
-            assertThat(buckets.get(i), greaterThan(70));
+        for (int i = 1; i < 101; i++) {
+            assertThat(buckets.get(i), lessThan(135));
+            assertThat(buckets.get(i), greaterThan(65));
         }
     }
 }
