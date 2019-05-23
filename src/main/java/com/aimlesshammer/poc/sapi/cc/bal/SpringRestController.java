@@ -4,10 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SpringRestController {
@@ -25,6 +22,13 @@ public class SpringRestController {
         System.out.println(rate);
         logger.info(logMessageSingleArg("Setting failure rate"), rate);
         return requestHandler.setFailureRate(rate);
+    }
+
+    @PostMapping("/perRequestDelayRange")
+    public ResponseEntity<String> setPerRequestDelayRange(@RequestParam("min") int min, @RequestParam("max") int max) {
+        logger.info(logMessageSingleArg("Setting min per-request delay"), min);
+        logger.info(logMessageSingleArg("Setting max per-request delay"), max);
+        return requestHandler.setPerRequestDelayRange(min, max);
     }
 
     private String logMessageSingleArg(String msg) {

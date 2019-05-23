@@ -48,4 +48,16 @@ public class SpringHttpClient {
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
         return restTemplate;
     }
+
+    public long get_timeTakenMs(String requestUrl) {
+        long start = System.currentTimeMillis();
+        restTemplate.exchange(
+                requestUrl,
+                HttpMethod.GET,
+                DEFAULT_HEADERS,
+                STRING_RESPONSE_TYPE
+        );
+        long end = System.currentTimeMillis();
+        return end - start;
+    }
 }
