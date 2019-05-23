@@ -19,7 +19,6 @@ public class SpringRestController {
 
     @PostMapping("failureRate/{rate}")
     public ResponseEntity<String> setFailureRate(@PathVariable("rate") Integer rate) {
-        System.out.println(rate);
         logger.info(logMessageSingleArg("Setting failure rate"), rate);
         return requestHandler.setFailureRate(rate);
     }
