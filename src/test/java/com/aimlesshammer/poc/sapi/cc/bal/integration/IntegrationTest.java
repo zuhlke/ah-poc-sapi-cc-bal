@@ -48,6 +48,8 @@ public class IntegrationTest {
     public void canSetFailureRateAt100Pc() {
         springHttpClient.post(origin + "/failureRate/100");
         assertEquals(500, springHttpClient.get_statusCode(requestUrl));
+        assertEquals(500, springHttpClient.get_statusCode(requestUrl));
+        assertEquals(500, springHttpClient.get_statusCode(requestUrl));
     }
 
     @Test
