@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class IntegrationTest {
     private final SpringHttpClient springHttpClient = new SpringHttpClient();
+    private final String origin = "http://localhost:3001";
 
     @Before
     public void setUp() {
@@ -26,7 +27,6 @@ public class IntegrationTest {
 
     @Test
     public void canGetBalances() {
-        String origin = "http://localhost:3001";
         assertEquals(
                 "[\n" +
                         "  {\n" +
@@ -37,5 +37,11 @@ public class IntegrationTest {
                         "]",
                 springHttpClient.get(origin + "/customer/10101010/balance")
         );
+    }
+
+    @Test
+    public void canSetFailureRateAt100Pc() {
+        springHttpClient.post(origin + "/failureRate/100");
+        assertEquals(500, springHttpClient.get_statusCode(origin + "/customer/10101010/balance"));
     }
 }
