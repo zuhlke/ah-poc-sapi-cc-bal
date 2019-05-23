@@ -17,13 +17,13 @@ public class SpringRestController {
         return requestHandler.balance();
     }
 
-    @PostMapping("failureRate/{rate}")
+    @PostMapping("failureRatePc/{rate}")
     public ResponseEntity<String> setFailureRate(@PathVariable("rate") Integer rate) {
         logger.info(logMessageSingleArg("Setting failure rate"), rate);
         return requestHandler.setFailureRate(rate);
     }
 
-    @PostMapping("/perRequestDelayRange")
+    @PostMapping("/perRequestDelayRangeMs")
     public ResponseEntity<String> setPerRequestDelayRange(@RequestParam("min") int min, @RequestParam("max") int max) {
         logger.info(logMessageSingleArg("Setting min per-request delay"), min);
         logger.info(logMessageSingleArg("Setting max per-request delay"), max);

@@ -46,7 +46,7 @@ public class IntegrationTest {
 
     @Test
     public void canSetFailureRateAt100Pc() {
-        springHttpClient.post(origin + "/failureRate/100");
+        springHttpClient.post(origin + "/failureRatePc/100");
         assertEquals(500, springHttpClient.get_statusCode(requestUrl));
         assertEquals(500, springHttpClient.get_statusCode(requestUrl));
         assertEquals(500, springHttpClient.get_statusCode(requestUrl));
@@ -60,7 +60,7 @@ public class IntegrationTest {
 
 
         long initialMs = springHttpClient.get_timeTakenMs(requestUrl);
-        springHttpClient.post(origin + "/perRequestDelayRange?min=100&max=100");
+        springHttpClient.post(origin + "/perRequestDelayRangeMs?min=100&max=100");
         long delayedMs = springHttpClient.get_timeTakenMs(requestUrl);
         long difference = delayedMs - initialMs;
 

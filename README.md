@@ -24,10 +24,10 @@ Go via the pipeline by pushing to master.
 
 ## SAPI behaviour Configurations
 
-- Send a request like `/failureRate/100` to set the failure rate. In this case, the failure rate is set to 100%. This will make every request return 500 INTERNAL SERVER ERROR.
+- Send a request like `/failureRatePc/100` to set the failure rate. In this case, the failure rate is set to 100%. This will make every request return 500 INTERNAL SERVER ERROR.
   - Note that this number must be an integer between 1 and 100.
   
-- Send a request like `/perRequestDelayRange?min=100&max=200` to set the per-request random delay range. In this case, there will be a delay for each request between 100ms and 200ms.
+- Send a request like `/perRequestDelayRangeMs?min=100&max=200` to set the per-request random delay range. In this case, there will be a delay for each request between 100ms and 200ms.
   - Note that both the min and max values must be integers, don't give it negative integers because that would be silly.
 
 ## Configurable SAPI Wish list
