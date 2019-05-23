@@ -8,7 +8,6 @@ Springboot SAPI for getting credit card balances.
 
 `./run-locally`
 
-
 ## Run tests
 
 `./tests`
