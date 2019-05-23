@@ -28,7 +28,7 @@ Go via the pipeline by pushing to master.
   - Note that this number must be an integer between 1 and 100.
   
 - Send a request like `/perRequestDelayRangeMs?min=100&max=200` to set the per-request random delay range. In this case, there will be a delay for each request between 100ms and 200ms.
-  - Note that both the min and max values must be integers, don't give it negative integers because that would be silly.
+  - Note that both the min and max values must be integers, don't give it negative integers because that would be silly. It would also be silly to give a max value that is less than the min value.
 
 ## Configurable SAPI Wish list
 
