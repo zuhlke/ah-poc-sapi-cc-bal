@@ -3,7 +3,7 @@ package com.aimlesshammer.poc.sapi.cc.bal;
 public class UniformDistributedRandomNumberGenerator implements RandomNumberGenerator {
     @Override
     public int randomPercent() {
-        return randomRange(0, 99);
+        return randomRange(1, 100);
     }
 
     @Override

@@ -22,6 +22,11 @@ Go via the pipeline by pushing to master.
 - Pipeline file is `.travis.yml`.
 - Environment variables are injected by travis.
 
+## SAPI behaviour Configurations
+
+- Send a request like `/failureRate/100` to set the failure rate. In this case, the failure rate is set to 100%. This will make every request return 500 INTERNAL SERVER ERROR.
+  - Note that this number must be an integer between 1 and 100. 
+
 ## Configurable SAPI Wish list
 
 - Specify failure rate
