@@ -43,12 +43,6 @@ public class SpringHttpClient {
         }
     }
 
-    private RestTemplate createSpringRestTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        return restTemplate;
-    }
-
     public long get_timeTakenMs(String requestUrl) {
         long start = System.currentTimeMillis();
         restTemplate.exchange(
@@ -59,5 +53,11 @@ public class SpringHttpClient {
         );
         long end = System.currentTimeMillis();
         return end - start;
+    }
+
+    private RestTemplate createSpringRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+        return restTemplate;
     }
 }
