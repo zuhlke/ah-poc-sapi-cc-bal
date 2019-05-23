@@ -2,9 +2,9 @@ package com.aimlesshammer.poc.sapi.cc.bal;
 
 public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     private final RandomNumberGenerator randomNumberGenerator;
-    private int failureRate;
-    private int minDelay;
-    private int maxDelay;
+    private int failureRate = 0;
+    private int minDelay = 0;
+    private int maxDelay = 0;
 
     public RandomBehaviourPolicy(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
