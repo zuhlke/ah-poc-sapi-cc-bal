@@ -1,12 +1,12 @@
 package com.aimlesshammer.poc.sapi.cc.bal;
 
-public class RandomBehaviourConfiguration {
+public class RandomBehaviourPolicy {
     private final RandomNumberGenerator randomNumberGenerator;
     private int failureRate;
     private int min;
     private int max;
 
-    public RandomBehaviourConfiguration(RandomNumberGenerator randomNumberGenerator) {
+    public RandomBehaviourPolicy(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 

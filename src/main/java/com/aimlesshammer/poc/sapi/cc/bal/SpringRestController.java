@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class SpringRestController {
     private static final Logger logger = LoggerFactory.getLogger(SpringRestController.class);
-    private final RequestHandler requestHandler = new RequestHandler(new RandomBehaviourConfiguration(new UniformDistributedRandomNumberGenerator()));
+    private final RequestHandler requestHandler = new RequestHandler(new RandomBehaviourPolicy(new UniformDistributedRandomNumberGenerator()));
 
     @GetMapping(path = "/customer/{customer-id}/balance", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> balance(@PathVariable("customer-id") String customerId) {

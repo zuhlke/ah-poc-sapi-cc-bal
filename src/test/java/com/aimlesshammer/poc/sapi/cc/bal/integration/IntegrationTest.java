@@ -54,6 +54,7 @@ public class IntegrationTest {
     public void canSetRandomDelayAt100ms() {
         // Warm up
         springHttpClient.get(requestUrl);
+        springHttpClient.get(requestUrl);
 
 
         long initialMs = springHttpClient.get_timeTakenMs(requestUrl);
@@ -61,8 +62,8 @@ public class IntegrationTest {
         long delayedMs = springHttpClient.get_timeTakenMs(requestUrl);
         long difference = delayedMs - initialMs;
 
-        // The second request should be at least 90ms slower, and no more than 110ms slower
-        assertThat(difference, greaterThan(90L));
-        assertThat(difference, lessThan(110L));
+        // The second request should be at least 85ms slower, and no more than 115ms slower
+        assertThat(difference, greaterThan(85L));
+        assertThat(difference, lessThan(115L));
     }
 }

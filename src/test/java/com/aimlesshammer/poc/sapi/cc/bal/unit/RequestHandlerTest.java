@@ -1,6 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
-import com.aimlesshammer.poc.sapi.cc.bal.RandomBehaviourConfiguration;
+import com.aimlesshammer.poc.sapi.cc.bal.RandomBehaviourPolicy;
 import com.aimlesshammer.poc.sapi.cc.bal.RandomNumberGenerator;
 import com.aimlesshammer.poc.sapi.cc.bal.RequestHandler;
 import org.junit.Test;
@@ -31,6 +31,6 @@ public class RequestHandlerTest {
     }
 
     private RequestHandler defaultRequestHandlerWithCustomRandomNumberGenerator(RandomNumberGenerator stubRandomNumberGenerator) {
-        return new RequestHandler(new RandomBehaviourConfiguration(stubRandomNumberGenerator));
+        return new RequestHandler(new RandomBehaviourPolicy(stubRandomNumberGenerator));
     }
 }
