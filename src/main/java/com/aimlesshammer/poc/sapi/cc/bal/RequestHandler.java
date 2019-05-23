@@ -4,19 +4,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class RequestHandler {
-    private final RandomNumberGenerator randomNumberGenerator;
-    private int failureRate = 0;
-    private int min;
-    private int max;
+    private final RandomBehaviourConfiguration randomBehaviourConfiguration;
 
-    public RequestHandler(RandomNumberGenerator randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
+    public RequestHandler(RandomBehaviourConfiguration randomBehaviourConfiguration) {
+        this.randomBehaviourConfiguration = randomBehaviourConfiguration;
     }
 
     public ResponseEntity<String> balance() {
-        awaitRandomDelay();
+        randomBehaviourConfiguration.awaitRandomDelay();
 
-        if (randomNumberGenerator.randomPercent() < failureRate) {
+        if (randomBehaviourConfiguration.shouldRandomlyFail()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -30,21 +27,12 @@ public class RequestHandler {
     }
 
     public ResponseEntity<String> setFailureRate(int rate) {
-        failureRate = rate;
+        randomBehaviourConfiguration.setFailureRate(rate);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public ResponseEntity<String> setPerRequestDelayRange(int min, int max) {
-        this.min = min;
-        this.max = max;
-        return null;
-    }
-
-    private void awaitRandomDelay() {
-        int delayTime = randomNumberGenerator.randomRange(min, max);
-        try {
-            Thread.sleep(delayTime);
-        } catch (InterruptedException ignored) {
-        }
+        randomBehaviourConfiguration.setPerRequestDelayRange(min, max);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

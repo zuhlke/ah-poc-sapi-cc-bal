@@ -1,5 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
+import com.aimlesshammer.poc.sapi.cc.bal.RandomBehaviourConfiguration;
 import com.aimlesshammer.poc.sapi.cc.bal.RandomNumberGenerator;
 import com.aimlesshammer.poc.sapi.cc.bal.RequestHandler;
 import org.junit.Test;
@@ -14,7 +15,7 @@ public class RequestHandlerTest {
         RandomNumberGenerator stubRandomNumberGenerator = Mockito.mock(RandomNumberGenerator.class);
         Mockito.when(stubRandomNumberGenerator.randomPercent()).thenReturn(51);
 
-        RequestHandler requestHandler = new RequestHandler(stubRandomNumberGenerator);
+        RequestHandler requestHandler = defaultRequestHandlerWithCustomRandomNumberGenerator(stubRandomNumberGenerator);
         requestHandler.setFailureRate(50);
         assertThat(requestHandler.balance().getStatusCodeValue(), equalTo(200));
     }
@@ -24,8 +25,12 @@ public class RequestHandlerTest {
         RandomNumberGenerator stubRandomNumberGenerator = Mockito.mock(RandomNumberGenerator.class);
         Mockito.when(stubRandomNumberGenerator.randomPercent()).thenReturn(49);
 
-        RequestHandler requestHandler = new RequestHandler(stubRandomNumberGenerator);
+        RequestHandler requestHandler = defaultRequestHandlerWithCustomRandomNumberGenerator(stubRandomNumberGenerator);
         requestHandler.setFailureRate(50);
         assertThat(requestHandler.balance().getStatusCodeValue(), equalTo(500));
+    }
+
+    private RequestHandler defaultRequestHandlerWithCustomRandomNumberGenerator(RandomNumberGenerator stubRandomNumberGenerator) {
+        return new RequestHandler(new RandomBehaviourConfiguration(stubRandomNumberGenerator));
     }
 }
