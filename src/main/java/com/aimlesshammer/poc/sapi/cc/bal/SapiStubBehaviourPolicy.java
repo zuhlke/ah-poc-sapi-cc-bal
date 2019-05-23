@@ -1,9 +1,9 @@
 package com.aimlesshammer.poc.sapi.cc.bal;
 
 public interface SapiStubBehaviourPolicy {
-    boolean shouldRandomlyFail();
-
     void setFailureRate(int rate);
+
+    boolean shouldRandomlyFail();
 
     void setPerRequestDelayRange(int min, int max);
 
