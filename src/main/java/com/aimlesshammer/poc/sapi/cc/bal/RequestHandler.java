@@ -4,10 +4,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class RequestHandler {
-    private boolean failing = false;
+    private final RandomNumberGenerator randomNumberGenerator;
+    private int failureRate = 0;
+
+    public RequestHandler(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
+    }
 
     public ResponseEntity<String> balance() {
-        if (failing) {
+        if (randomNumberGenerator.randomPercent() < failureRate) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -21,7 +26,7 @@ public class RequestHandler {
     }
 
     public ResponseEntity<String> setFailureRate(int rate) {
-        failing = true;
+        failureRate = rate;
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
