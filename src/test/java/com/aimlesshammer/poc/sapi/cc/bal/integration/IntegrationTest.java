@@ -1,5 +1,6 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.integration;
 
+import com.aimlesshammer.poc.sapi.cc.bal.PocSapiCreditCardBalancesApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,12 +17,12 @@ public class IntegrationTest {
     private final String origin = "http://localhost:3001";
 
     @Before
-    public void setUp() {
+    public void beforeEach() {
         PocSapiCreditCardBalancesApplication.start(new String[]{});
     }
 
     @After
-    public void tearDown() {
+    public void afterEach() {
         PocSapiCreditCardBalancesApplication.stop(0);
     }
 

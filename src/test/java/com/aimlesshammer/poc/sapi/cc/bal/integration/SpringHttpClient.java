@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.integration;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
