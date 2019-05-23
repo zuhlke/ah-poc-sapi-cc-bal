@@ -3,8 +3,8 @@ package com.aimlesshammer.poc.sapi.cc.bal;
 public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     private final RandomNumberGenerator randomNumberGenerator;
     private int failureRate;
-    private int min;
-    private int max;
+    private int minDelay;
+    private int maxDelay;
 
     public RandomBehaviourPolicy(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
@@ -22,13 +22,13 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
 
     @Override
     public void setPerRequestDelayRange(int min, int max) {
-        this.min = min;
-        this.max = max;
+        minDelay = min;
+        maxDelay = max;
     }
 
     @Override
     public void awaitRandomDelay() {
-        int delayTime = randomNumberGenerator.randomRange(min, max);
+        int delayTime = randomNumberGenerator.randomRange(minDelay, maxDelay);
         try {
             Thread.sleep(delayTime);
         } catch (InterruptedException ignored) {
