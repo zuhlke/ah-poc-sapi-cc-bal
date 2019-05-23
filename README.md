@@ -25,7 +25,7 @@ Go via the pipeline by pushing to master.
 ## Configurable SAPI Wish list
 
 - Specify failure rate
-- Specify random delay
+- Specify delay for every request, randomly selected within a range
 - Delay based on load
 - Go offline for random durations
 - Random restarts
