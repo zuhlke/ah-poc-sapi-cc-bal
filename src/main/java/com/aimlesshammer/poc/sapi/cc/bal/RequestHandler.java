@@ -4,16 +4,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class RequestHandler {
-    private final RandomBehaviourPolicy randomBehaviourPolicy;
+    private final SapiStubBehaviourPolicy behaviourPolicy;
 
-    public RequestHandler(RandomBehaviourPolicy randomBehaviourPolicy) {
-        this.randomBehaviourPolicy = randomBehaviourPolicy;
+    public RequestHandler(SapiStubBehaviourPolicy behaviourPolicy) {
+        this.behaviourPolicy = behaviourPolicy;
     }
 
     public ResponseEntity<String> balance() {
-        randomBehaviourPolicy.awaitRandomDelay();
+        behaviourPolicy.awaitRandomDelay();
 
-        if (randomBehaviourPolicy.shouldRandomlyFail()) {
+        if (behaviourPolicy.shouldRandomlyFail()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -27,12 +27,12 @@ public class RequestHandler {
     }
 
     public ResponseEntity<String> setFailureRate(int rate) {
-        randomBehaviourPolicy.setFailureRate(rate);
+        behaviourPolicy.setFailureRate(rate);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public ResponseEntity<String> setPerRequestDelayRange(int min, int max) {
-        randomBehaviourPolicy.setPerRequestDelayRange(min, max);
+        behaviourPolicy.setPerRequestDelayRange(min, max);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
