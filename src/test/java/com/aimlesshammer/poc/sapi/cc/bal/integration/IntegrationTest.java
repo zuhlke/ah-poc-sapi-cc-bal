@@ -60,9 +60,10 @@ public class IntegrationTest {
         long delayedMs = springHttpClient.get_timeTakenMs(requestUrl);
         long difference = delayedMs - initialMs;
 
-        // The second request should be at least 85ms slower, and no more than 115ms slower
-        assertThat(difference, greaterThan(85L));
-        assertThat(difference, lessThan(115L));
+        // The second request should be at least 80ms slower, and no more than 120ms slower
+        // This has not been an exercise in science
+        assertThat(difference, greaterThan(80L));
+        assertThat(difference, lessThan(120L));
     }
 
     @Test
