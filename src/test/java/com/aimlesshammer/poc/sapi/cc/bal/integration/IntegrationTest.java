@@ -54,7 +54,6 @@ public class IntegrationTest {
         springHttpClient.get(requestUrl);
         springHttpClient.get(requestUrl);
 
-
         long initialMs = springHttpClient.get_timeTakenMs(requestUrl);
         springHttpClient.post(origin + "/perRequestDelayRangeMs?min=100&max=100");
         long delayedMs = springHttpClient.get_timeTakenMs(requestUrl);
