@@ -34,13 +34,7 @@ public class IntegrationTest {
     @Test
     public void canGetBalances() {
         assertEquals(
-                "[\n" +
-                        "  {\n" +
-                        "    \"customerId\": \"10101010\",\n" +
-                        "    \"creditCardNumber\": \"1234567890\",\n" +
-                        "    \"balance\": \"1234.50\"\n" +
-                        "  }\n" +
-                        "]",
+                "[\n{\n\"customerId\":\"10101010\",\n\"creditCardNumber\":\"1234567890\",\n\"balance\":\"1234.50\"\n}\n]",
                 springHttpClient.get(requestUrl)
         );
     }

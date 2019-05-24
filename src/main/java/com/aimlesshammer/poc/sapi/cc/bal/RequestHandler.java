@@ -17,13 +17,7 @@ public class RequestHandler {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return new ResponseEntity<>("[\n" +
-                "  {\n" +
-                "    \"customerId\": \"10101010\",\n" +
-                "    \"creditCardNumber\": \"1234567890\",\n" +
-                "    \"balance\": \"1234.50\"\n" +
-                "  }\n" +
-                "]", HttpStatus.OK);
+        return new ResponseEntity<>("[\n{\n\"customerId\":\"10101010\",\n\"creditCardNumber\":\"1234567890\",\n\"balance\":\"1234.50\"\n}\n]", HttpStatus.OK);
     }
 
     public ResponseEntity<String> setFailureRate(int rate) {
