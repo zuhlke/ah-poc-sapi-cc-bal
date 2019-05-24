@@ -20,8 +20,8 @@ public class SpringRestController {
     @GetMapping(path = "/customer/{customer-id}/balance", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> balance(@RequestHeader Map<String, String> headers, @PathVariable("customer-id") String customerId) {
         logger.info(logMessageSingleArg("Requesting balances for customer"), customerId);
-        logger.info(logMessageSingleArg(X_POLICY_FAILURE_RATE_HEADER_NAME), headers.get(X_POLICY_FAILURE_RATE_HEADER_NAME));
-        logger.info(logMessageSingleArg(X_POLICY_DELAY_RANGE_HEADER_NAME), headers.get(X_POLICY_DELAY_RANGE_HEADER_NAME));
+        logger.info(logMessageSingleArg("Header value " + X_POLICY_FAILURE_RATE_HEADER_NAME), headers.get(X_POLICY_FAILURE_RATE_HEADER_NAME));
+        logger.info(logMessageSingleArg("Header value " + X_POLICY_DELAY_RANGE_HEADER_NAME), headers.get(X_POLICY_DELAY_RANGE_HEADER_NAME));
         try {
             return requestHandler.balance(headers);
         } catch (BadlyFormattedSapiPolicyHeaderException e) {

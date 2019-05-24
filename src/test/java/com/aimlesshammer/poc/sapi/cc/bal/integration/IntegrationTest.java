@@ -74,4 +74,9 @@ public class IntegrationTest {
     public void returns500IfFailureRateHeaderIsSetTo100() {
         assertThat(springHttpClient.get_withHeader_statusCode(requestUrl, X_POLICY_FAILURE_RATE_HEADER_NAME, "100"), equalTo(500));
     }
+
+    @Test
+    public void returns400IfDelayRangeIsSetWithWrongFormatting() {
+        assertThat(springHttpClient.get_withHeader_statusCode(requestUrl, X_POLICY_FAILURE_RATE_HEADER_NAME, "100_200"), equalTo(400));
+    }
 }
