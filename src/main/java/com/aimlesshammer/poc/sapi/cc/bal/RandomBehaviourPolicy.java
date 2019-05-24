@@ -5,6 +5,7 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     private int failureRate = 0;
     private int minDelay = 0;
     private int maxDelay = 0;
+    private boolean usingDefaultBehaviour = true;
 
     public RandomBehaviourPolicy(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
@@ -19,6 +20,7 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     public void setPerRequestDelayRange(int min, int max) {
         minDelay = min;
         maxDelay = max;
+        usingDefaultBehaviour = false;
     }
 
     @Override
@@ -35,6 +37,7 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
         failureRate = 0;
         minDelay = 0;
         maxDelay = 0;
+        usingDefaultBehaviour = true;
     }
 
     @Override
@@ -45,6 +48,7 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     @Override
     public void setFailureRate(int rate) {
         failureRate = rate;
+        usingDefaultBehaviour = false;
     }
 
     @Override
@@ -59,6 +63,6 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
 
     @Override
     public boolean isUsingDefaultBehaviour() {
-        return failureRate == 0 && minDelay == 0 && maxDelay == 0;
+        return usingDefaultBehaviour;
     }
 }

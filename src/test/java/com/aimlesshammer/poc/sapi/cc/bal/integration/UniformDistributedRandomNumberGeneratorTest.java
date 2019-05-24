@@ -27,11 +27,11 @@ public class UniformDistributedRandomNumberGeneratorTest {
         }
 
         // Numbers 0-99 with 10K tries => Should be approximately 100 entries in each bucket
-        // Lets go with asserting that there's between 65-135 in each
+        // Lets go with asserting that there's between 60-140 in each
         // This has not been an exercise in science.
         for (int i = 1; i < 101; i++) {
-            assertThat(buckets.get(i), lessThan(135));
-            assertThat(buckets.get(i), greaterThan(65));
+            assertThat(buckets.get(i), lessThan(140));
+            assertThat(buckets.get(i), greaterThan(60));
         }
     }
 }
