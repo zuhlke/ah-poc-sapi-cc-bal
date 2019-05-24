@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
@@ -67,5 +68,10 @@ public class IntegrationTest {
         // The second request should be at least 85ms slower, and no more than 115ms slower
         assertThat(difference, greaterThan(85L));
         assertThat(difference, lessThan(115L));
+    }
+
+    @Test
+    public void resetEndpointReturns200() {
+        assertThat(springHttpClient.post_statusCode(origin + "/reset"), equalTo(200));
     }
 }

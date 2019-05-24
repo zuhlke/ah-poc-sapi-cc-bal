@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
 
 public class RandomBehaviourPolicyTest {
@@ -28,5 +30,20 @@ public class RandomBehaviourPolicyTest {
         SapiStubBehaviourPolicy sapiStubBehaviourPolicy = new RandomBehaviourPolicy(stubRandomNumberGenerator);
         sapiStubBehaviourPolicy.setFailureRate(50);
         assertTrue(sapiStubBehaviourPolicy.shouldRandomlyFail());
+    }
+
+    @Test
+    public void resettingCausesParamsToResetToInitialValues() {
+        RandomNumberGenerator dummyRNG = Mockito.mock(RandomNumberGenerator.class);
+
+        SapiStubBehaviourPolicy sapiStubBehaviourPolicy = new RandomBehaviourPolicy(dummyRNG);
+        sapiStubBehaviourPolicy.setFailureRate(50);
+        sapiStubBehaviourPolicy.setPerRequestDelayRange(100, 200);
+
+        sapiStubBehaviourPolicy.reset();
+
+        assertThat(sapiStubBehaviourPolicy.getFailureRate(), equalTo(0));
+        assertThat(sapiStubBehaviourPolicy.getPerRequestMinDelay(), equalTo(0));
+        assertThat(sapiStubBehaviourPolicy.getPerRequestMaxDelay(), equalTo(0));
     }
 }

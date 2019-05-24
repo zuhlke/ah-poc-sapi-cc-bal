@@ -30,6 +30,16 @@ public class SpringRestController {
         return requestHandler.setPerRequestDelayRange(min, max);
     }
 
+    @PostMapping("/reset")
+    public ResponseEntity<String> setPerRequestDelayRange() {
+        logger.info(logMessageNoArgs("Resetting SAPI behaviour policy"));
+        return requestHandler.resetBehaviourPolicy();
+    }
+
+    private String logMessageNoArgs(String msg) {
+        return PocSapiCreditCardBalancesApplication.LOG_ID + ": " + msg;
+    }
+
     private String logMessageSingleArg(String msg) {
         return PocSapiCreditCardBalancesApplication.LOG_ID + ": " + msg + ": '{}'";
     }

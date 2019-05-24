@@ -35,4 +35,9 @@ public class RequestHandler {
         behaviourPolicy.setPerRequestDelayRange(min, max);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    public ResponseEntity<String> resetBehaviourPolicy() {
+        behaviourPolicy.reset();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

@@ -28,4 +28,14 @@ public class RequestHandlerTest {
 
         assertThat(requestHandler.balance().getStatusCodeValue(), equalTo(500));
     }
+
+    @Test
+    public void whenResettingItCallsTheResetMethodOfTheStubSapiBehaviourPolicy() {
+        SapiStubBehaviourPolicy stubSapiStubBehaviourPolicy = Mockito.mock(SapiStubBehaviourPolicy.class);
+        RequestHandler requestHandler = new RequestHandler(stubSapiStubBehaviourPolicy);
+
+        requestHandler.resetBehaviourPolicy();
+
+        Mockito.verify(stubSapiStubBehaviourPolicy).reset();
+    }
 }

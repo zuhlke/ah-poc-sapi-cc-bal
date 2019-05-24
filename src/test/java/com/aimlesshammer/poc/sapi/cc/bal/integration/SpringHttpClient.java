@@ -60,4 +60,17 @@ public class SpringHttpClient {
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
         return restTemplate;
     }
+
+    public int post_statusCode(String requestUrl) {
+        try {
+            return restTemplate.exchange(
+                    requestUrl,
+                    HttpMethod.POST,
+                    DEFAULT_HEADERS,
+                    STRING_RESPONSE_TYPE
+            ).getStatusCodeValue();
+        } catch (HttpStatusCodeException exception) {
+            return exception.getStatusCode().value();
+        }
+    }
 }

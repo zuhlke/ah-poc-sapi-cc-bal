@@ -8,4 +8,12 @@ public interface SapiStubBehaviourPolicy {
     void setPerRequestDelayRange(int min, int max);
 
     void awaitRandomDelay();
+
+    void reset();
+
+    int getFailureRate();
+
+    int getPerRequestMinDelay();
+
+    int getPerRequestMaxDelay();
 }

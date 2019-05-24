@@ -11,11 +11,6 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     }
 
     @Override
-    public void setFailureRate(int rate) {
-        failureRate = rate;
-    }
-
-    @Override
     public boolean shouldRandomlyFail() {
         return randomNumberGenerator.randomPercent() < failureRate;
     }
@@ -33,5 +28,32 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
             Thread.sleep(delayTime);
         } catch (InterruptedException ignored) {
         }
+    }
+
+    @Override
+    public void reset() {
+        failureRate = 0;
+        minDelay = 0;
+        maxDelay = 0;
+    }
+
+    @Override
+    public int getFailureRate() {
+        return failureRate;
+    }
+
+    @Override
+    public void setFailureRate(int rate) {
+        failureRate = rate;
+    }
+
+    @Override
+    public int getPerRequestMinDelay() {
+        return minDelay;
+    }
+
+    @Override
+    public int getPerRequestMaxDelay() {
+        return maxDelay;
     }
 }
