@@ -29,6 +29,12 @@ Go via the pipeline by pushing to master.
 - Send a request like `/perRequestDelayRangeMs?min=100&max=200` to set the per-request random delay range. In this case, there will be a delay for each request between 100ms and 200ms.
   - Note that both the min and max values must be integers, don't give it negative integers because that would be silly. It would also be silly to give a max value that is less than the min value.
 
+
+## Resetting the SAPI's behaviour to default
+
+- Send a request `/reset` and the currently configured behaviour policy for the SAPI will be reset. This means that no failures will be artificially induced and there will be no artificial delay
+on responses.
+
 ## Configurable SAPI Wish list
 
 - Specify failure rate
