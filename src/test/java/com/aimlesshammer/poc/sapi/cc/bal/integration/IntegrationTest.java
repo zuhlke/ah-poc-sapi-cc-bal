@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -67,5 +68,10 @@ public class IntegrationTest {
     @Test
     public void resetEndpointReturns200() {
         assertThat(springHttpClient.post_statusCode(origin + "/reset"), equalTo(200));
+    }
+
+    @Test
+    public void returns500IfFailureRateHeaderIsSetTo100() {
+        assertThat(springHttpClient.get_withHeader_statusCode(requestUrl, X_POLICY_FAILURE_RATE_HEADER_NAME, "100"), equalTo(500));
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 public class SpringHttpClient {
-    private final HttpEntity<Object> DEFAULT_HEADERS = new HttpEntity<>(new HttpHeaders());
     private final Class<String> STRING_RESPONSE_TYPE = String.class;
     private final RestTemplate restTemplate = createSpringRestTemplate();
 
@@ -16,7 +15,7 @@ public class SpringHttpClient {
         return restTemplate.exchange(
                 requestUrl,
                 HttpMethod.GET,
-                DEFAULT_HEADERS,
+                new HttpEntity<>(new HttpHeaders()),
                 STRING_RESPONSE_TYPE
         ).getBody();
     }
@@ -25,7 +24,7 @@ public class SpringHttpClient {
         restTemplate.exchange(
                 requestUrl,
                 HttpMethod.POST,
-                DEFAULT_HEADERS,
+                new HttpEntity<>(new HttpHeaders()),
                 STRING_RESPONSE_TYPE
         );
     }
@@ -35,7 +34,7 @@ public class SpringHttpClient {
             return restTemplate.exchange(
                     requestUrl,
                     HttpMethod.GET,
-                    DEFAULT_HEADERS,
+                    new HttpEntity<>(new HttpHeaders()),
                     STRING_RESPONSE_TYPE
             ).getStatusCodeValue();
         } catch (HttpStatusCodeException exception) {
@@ -48,7 +47,7 @@ public class SpringHttpClient {
         restTemplate.exchange(
                 requestUrl,
                 HttpMethod.GET,
-                DEFAULT_HEADERS,
+                new HttpEntity<>(new HttpHeaders()),
                 STRING_RESPONSE_TYPE
         );
         long end = System.currentTimeMillis();
@@ -66,7 +65,24 @@ public class SpringHttpClient {
             return restTemplate.exchange(
                     requestUrl,
                     HttpMethod.POST,
-                    DEFAULT_HEADERS,
+                    new HttpEntity<>(new HttpHeaders()),
+                    STRING_RESPONSE_TYPE
+            ).getStatusCodeValue();
+        } catch (HttpStatusCodeException exception) {
+            return exception.getStatusCode().value();
+        }
+    }
+
+    public int get_withHeader_statusCode(String requestUrl, String headerName, String headerValue) {
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(headerName, headerValue);
+            headers.set(headerName, headerValue);
+            HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
+            return restTemplate.exchange(
+                    requestUrl,
+                    HttpMethod.GET,
+                    requestEntity,
                     STRING_RESPONSE_TYPE
             ).getStatusCodeValue();
         } catch (HttpStatusCodeException exception) {

@@ -56,4 +56,9 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     public int getPerRequestMaxDelay() {
         return maxDelay;
     }
+
+    @Override
+    public boolean isUsingDefaultBehaviour() {
+        return failureRate == 0 && minDelay == 0 && maxDelay == 0;
+    }
 }

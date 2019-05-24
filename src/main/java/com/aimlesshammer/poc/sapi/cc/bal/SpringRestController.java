@@ -2,9 +2,15 @@ package com.aimlesshammer.poc.sapi.cc.bal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 
 @RestController
 public class SpringRestController {
@@ -12,9 +18,15 @@ public class SpringRestController {
     private final RequestHandler requestHandler = new RequestHandler(new RandomBehaviourPolicy(new UniformDistributedRandomNumberGenerator()));
 
     @GetMapping(path = "/customer/{customer-id}/balance", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> balance(@PathVariable("customer-id") String customerId) {
+    public ResponseEntity<String> balance(@RequestHeader Map<String, String> headers, @PathVariable("customer-id") String customerId) {
         logger.info(logMessageSingleArg("Requesting balances for customer"), customerId);
-        return requestHandler.balance();
+        logger.info(logMessageSingleArg(X_POLICY_FAILURE_RATE_HEADER_NAME), headers.get(X_POLICY_FAILURE_RATE_HEADER_NAME));
+        logger.info(logMessageSingleArg(X_POLICY_DELAY_RANGE_HEADER_NAME), headers.get(X_POLICY_DELAY_RANGE_HEADER_NAME));
+        try {
+            return requestHandler.balance(headers);
+        } catch (BadlyFormattedSapiPolicyHeaderException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("failureRatePc/{rate}")
