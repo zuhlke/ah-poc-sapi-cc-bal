@@ -13,8 +13,8 @@ public class RequestHandler {
     }
 
     public ResponseEntity<String> balance(Map<String, String> headers) throws BadlyFormattedSapiPolicyHeaderException {
-        BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
         if (behaviourPolicy.isUsingDefaultBehaviour()) {
+            BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
             behaviourPolicy.setFailureRate(behaviourPolicyHeaders.failureRate);
             behaviourPolicy.setPerRequestDelayRange(behaviourPolicyHeaders.minDelay, behaviourPolicyHeaders.maxDelay);
         }
