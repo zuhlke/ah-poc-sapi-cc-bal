@@ -1,34 +1,34 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
 import com.aimlesshammer.poc.sapi.cc.bal.BadlyFormattedSapiPolicyHeaderException;
-import com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders;
+import com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
-import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BehaviourPolicyHeadersTest {
+public class CustomBehaviourPolicyHeadersTest {
     @Test
     public void canReadFailureProbabilityFromHeaders() throws BadlyFormattedSapiPolicyHeaderException {
         Map<String, String> headers = new HashMap<>();
         headers.put(X_POLICY_FAILURE_RATE_HEADER_NAME, "10");
 
-        BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
+        CustomBehaviourPolicyHeaders customBehaviourPolicyHeaders = new CustomBehaviourPolicyHeaders(headers);
 
-        assertThat(behaviourPolicyHeaders.failureRate, equalTo(10));
+        assertThat(customBehaviourPolicyHeaders.failureRate, equalTo(10));
     }
 
     @Test
     public void shouldSetFailureRateTo0ByDefault() throws BadlyFormattedSapiPolicyHeaderException {
         Map<String, String> headers = new HashMap<>();
-        BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
+        CustomBehaviourPolicyHeaders customBehaviourPolicyHeaders = new CustomBehaviourPolicyHeaders(headers);
 
-        assertThat(behaviourPolicyHeaders.failureRate, equalTo(0));
+        assertThat(customBehaviourPolicyHeaders.failureRate, equalTo(0));
     }
 
     @Test
@@ -36,19 +36,19 @@ public class BehaviourPolicyHeadersTest {
         Map<String, String> headers = new HashMap<>();
         headers.put(X_POLICY_DELAY_RANGE_HEADER_NAME, "100-500");
 
-        BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
+        CustomBehaviourPolicyHeaders customBehaviourPolicyHeaders = new CustomBehaviourPolicyHeaders(headers);
 
-        assertThat(behaviourPolicyHeaders.minDelay, equalTo(100));
-        assertThat(behaviourPolicyHeaders.maxDelay, equalTo(500));
+        assertThat(customBehaviourPolicyHeaders.minDelay, equalTo(100));
+        assertThat(customBehaviourPolicyHeaders.maxDelay, equalTo(500));
     }
 
     @Test
     public void shouldSetDefaultRequestDelayRangeValues() throws BadlyFormattedSapiPolicyHeaderException {
         Map<String, String> headers = new HashMap<>();
-        BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
+        CustomBehaviourPolicyHeaders customBehaviourPolicyHeaders = new CustomBehaviourPolicyHeaders(headers);
 
-        assertThat(behaviourPolicyHeaders.minDelay, equalTo(0));
-        assertThat(behaviourPolicyHeaders.maxDelay, equalTo(0));
+        assertThat(customBehaviourPolicyHeaders.minDelay, equalTo(0));
+        assertThat(customBehaviourPolicyHeaders.maxDelay, equalTo(0));
     }
 
     @Test(expected = BadlyFormattedSapiPolicyHeaderException.class)
@@ -56,7 +56,7 @@ public class BehaviourPolicyHeadersTest {
         Map<String, String> headers = new HashMap<>();
         headers.put(X_POLICY_DELAY_RANGE_HEADER_NAME, "X*Y");
 
-        new BehaviourPolicyHeaders(headers);
+        new CustomBehaviourPolicyHeaders(headers);
     }
 
     @Test(expected = BadlyFormattedSapiPolicyHeaderException.class)
@@ -64,6 +64,6 @@ public class BehaviourPolicyHeadersTest {
         Map<String, String> headers = new HashMap<>();
         headers.put(X_POLICY_FAILURE_RATE_HEADER_NAME, "X*Y");
 
-        new BehaviourPolicyHeaders(headers);
+        new CustomBehaviourPolicyHeaders(headers);
     }
 }

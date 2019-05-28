@@ -11,9 +11,7 @@ public class RequestHandler {
     }
 
     public ResponseEntity<String> balance(BehaviourPolicyHeaders behaviourPolicyHeaders) {
-        if (behaviourPolicy.isUsingDefaultBehaviour()) {
-            behaviourPolicyHeaders.configure(behaviourPolicy);
-        }
+        behaviourPolicyHeaders.configure(behaviourPolicy);
         return balance();
     }
 

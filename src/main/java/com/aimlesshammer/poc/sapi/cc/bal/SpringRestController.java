@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
-import static com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 
 @RestController
 public class SpringRestController {
@@ -23,7 +23,7 @@ public class SpringRestController {
         logger.info(logMessageSingleArg("Header(" + X_POLICY_FAILURE_RATE_HEADER_NAME + ")"), headers.get(X_POLICY_FAILURE_RATE_HEADER_NAME));
         logger.info(logMessageSingleArg("Header(" + X_POLICY_DELAY_RANGE_HEADER_NAME + ")"), headers.get(X_POLICY_DELAY_RANGE_HEADER_NAME));
         try {
-            return requestHandler.balance(new BehaviourPolicyHeaders(headers));
+            return requestHandler.balance(BehaviourPolicyHeadersFactory.behaviourPolicyHeaders(headers));
         } catch (BadlyFormattedSapiPolicyHeaderException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
