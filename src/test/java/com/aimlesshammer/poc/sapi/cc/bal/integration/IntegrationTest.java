@@ -54,15 +54,24 @@ public class IntegrationTest {
         springHttpClient.get(requestUrl);
         springHttpClient.get(requestUrl);
 
-        long initialMs = springHttpClient.get_timeTakenMs(requestUrl);
-        springHttpClient.post(origin + "/perRequestDelayRangeMs?min=100&max=100");
-        long delayedMs = springHttpClient.get_timeTakenMs(requestUrl);
-        long difference = delayedMs - initialMs;
+        long normal_t1 = timedRequest();
+        long normal_t2 = timedRequest();
+        long normal_t3 = timedRequest();
+        long meanNormalTime = (normal_t1 + normal_t2 + normal_t3) / 3;
 
-        // The second request should be at least 70ms slower, and no more than 130ms slower
+        springHttpClient.post(origin + "/perRequestDelayRangeMs?min=100&max=100");
+
+        long delayed_t1 = timedRequest();
+        long delayed_t2 = timedRequest();
+        long delayed_t3 = timedRequest();
+        long meanDelayedTime = (delayed_t1 + delayed_t2 + delayed_t3) / 3;
+
+        long difference = meanDelayedTime - meanNormalTime;
+
+        // The difference in the mean response times should be at least 80ms slower, and no more than 120ms slower
         // This has not been an exercise in science
-        assertThat(difference, greaterThan(70L));
-        assertThat(difference, lessThan(130L));
+        assertThat(difference, greaterThan(80L));
+        assertThat(difference, lessThan(120L));
     }
 
     @Test
@@ -78,5 +87,9 @@ public class IntegrationTest {
     @Test
     public void returns400IfDelayRangeIsSetWithHeaderButFormattingIsWrong() {
         assertThat(springHttpClient.get_withHeader_statusCode(requestUrl, X_POLICY_FAILURE_RATE_HEADER_NAME, "100_200"), equalTo(400));
+    }
+
+    private long timedRequest() {
+        return springHttpClient.get_timeTakenMs(requestUrl);
     }
 }
