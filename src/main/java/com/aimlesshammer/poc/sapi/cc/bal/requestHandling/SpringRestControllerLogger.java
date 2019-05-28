@@ -35,12 +35,12 @@ public class SpringRestControllerLogger {
         logger.info(logMessageSingleArg(msg), arg);
     }
 
-    private void logHeader(Map<String, String> headers, String headerName) {
-        logger.info(logMessageSingleArg("Header(" + headerName + ")"), headers.get(headerName));
-    }
-
     private void log(String msg) {
         logger.info(logMessageNoArgs(msg));
+    }
+
+    private void logHeader(Map<String, String> headers, String headerName) {
+        logger.info(logMessageSingleArg("Header(" + headerName + ")"), headers.get(headerName));
     }
 
     private String logMessageSingleArg(String msg) {
