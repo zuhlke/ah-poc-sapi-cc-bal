@@ -24,7 +24,7 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     }
 
     @Override
-    public void awaitRandomDelay() {
+    public void awaitResponseDelay() {
         int delayTime = randomNumberGenerator.randomRange(minDelay, maxDelay);
         try {
             Thread.sleep(delayTime);

@@ -22,7 +22,7 @@ public class RequestHandler {
     }
 
     public ResponseEntity<String> balance() {
-        behaviourPolicy.awaitRandomDelay();
+        behaviourPolicy.awaitResponseDelay();
 
         if (behaviourPolicy.shouldFail()) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
