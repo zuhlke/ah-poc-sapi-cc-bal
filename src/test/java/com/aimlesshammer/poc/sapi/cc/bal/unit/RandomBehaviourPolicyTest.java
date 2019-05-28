@@ -19,7 +19,7 @@ public class RandomBehaviourPolicyTest {
 
         SapiStubBehaviourPolicy sapiStubBehaviourPolicy = new RandomBehaviourPolicy(stubRandomNumberGenerator);
         sapiStubBehaviourPolicy.setFailureRate(50);
-        assertFalse(sapiStubBehaviourPolicy.shouldRandomlyFail());
+        assertFalse(sapiStubBehaviourPolicy.shouldFail());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class RandomBehaviourPolicyTest {
 
         SapiStubBehaviourPolicy sapiStubBehaviourPolicy = new RandomBehaviourPolicy(stubRandomNumberGenerator);
         sapiStubBehaviourPolicy.setFailureRate(50);
-        assertTrue(sapiStubBehaviourPolicy.shouldRandomlyFail());
+        assertTrue(sapiStubBehaviourPolicy.shouldFail());
     }
 
     @Test

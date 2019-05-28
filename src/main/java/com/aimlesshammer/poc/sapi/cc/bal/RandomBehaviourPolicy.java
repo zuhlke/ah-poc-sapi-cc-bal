@@ -12,7 +12,7 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     }
 
     @Override
-    public boolean shouldRandomlyFail() {
+    public boolean shouldFail() {
         return randomNumberGenerator.randomPercent() < failureRate;
     }
 

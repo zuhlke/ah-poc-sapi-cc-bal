@@ -12,7 +12,7 @@ public class RequestHandlerTest {
     @Test
     public void whenSapiBehaviourPolicyDoesntCauseFailureItReturns200Ok() {
         SapiStubBehaviourPolicy stubSapiStubBehaviourPolicy = Mockito.mock(SapiStubBehaviourPolicy.class);
-        Mockito.when(stubSapiStubBehaviourPolicy.shouldRandomlyFail()).thenReturn(false);
+        Mockito.when(stubSapiStubBehaviourPolicy.shouldFail()).thenReturn(false);
 
         RequestHandler requestHandler = new RequestHandler(stubSapiStubBehaviourPolicy);
 
@@ -22,7 +22,7 @@ public class RequestHandlerTest {
     @Test
     public void whenSapiBehaviourPolicyCausesFailureItReturns500InternalServerError() {
         SapiStubBehaviourPolicy stubSapiStubBehaviourPolicy = Mockito.mock(SapiStubBehaviourPolicy.class);
-        Mockito.when(stubSapiStubBehaviourPolicy.shouldRandomlyFail()).thenReturn(true);
+        Mockito.when(stubSapiStubBehaviourPolicy.shouldFail()).thenReturn(true);
 
         RequestHandler requestHandler = new RequestHandler(stubSapiStubBehaviourPolicy);
 
