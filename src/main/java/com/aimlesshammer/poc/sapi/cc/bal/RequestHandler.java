@@ -3,8 +3,6 @@ package com.aimlesshammer.poc.sapi.cc.bal;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Map;
-
 public class RequestHandler {
     private final SapiStubBehaviourPolicy behaviourPolicy;
 
@@ -12,11 +10,9 @@ public class RequestHandler {
         this.behaviourPolicy = behaviourPolicy;
     }
 
-    public ResponseEntity<String> balance(Map<String, String> headers) throws BadlyFormattedSapiPolicyHeaderException {
+    public ResponseEntity<String> balance(BehaviourPolicyHeaders behaviourPolicyHeaders) {
         if (behaviourPolicy.isUsingDefaultBehaviour()) {
-            BehaviourPolicyHeaders behaviourPolicyHeaders = new BehaviourPolicyHeaders(headers);
-            behaviourPolicy.setFailureRate(behaviourPolicyHeaders.failureRate);
-            behaviourPolicy.setPerRequestDelayRange(behaviourPolicyHeaders.minDelay, behaviourPolicyHeaders.maxDelay);
+            behaviourPolicyHeaders.configure(behaviourPolicy);
         }
         return balance();
     }

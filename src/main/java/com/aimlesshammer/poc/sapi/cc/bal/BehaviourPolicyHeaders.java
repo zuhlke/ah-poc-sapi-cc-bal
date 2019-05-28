@@ -22,4 +22,9 @@ public class BehaviourPolicyHeaders {
             throw new BadlyFormattedSapiPolicyHeaderException(e);
         }
     }
+
+    public void configure(SapiStubBehaviourPolicy behaviourPolicy) {
+        behaviourPolicy.setFailureRate(failureRate);
+        behaviourPolicy.setPerRequestDelayRange(minDelay, maxDelay);
+    }
 }
