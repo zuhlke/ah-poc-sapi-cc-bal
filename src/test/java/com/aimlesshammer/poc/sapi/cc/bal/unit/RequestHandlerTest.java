@@ -1,7 +1,7 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
-import com.aimlesshammer.poc.sapi.cc.bal.RequestHandler;
-import com.aimlesshammer.poc.sapi.cc.bal.SapiStubBehaviourPolicy;
+import com.aimlesshammer.poc.sapi.cc.bal.requestHandling.RequestHandler;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.SapiStubBehaviourPolicy;
 import org.junit.Test;
 import org.mockito.Mockito;
 

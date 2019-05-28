@@ -1,6 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.integration;
 
-import com.aimlesshammer.poc.sapi.cc.bal.UniformDistributedRandomNumberGenerator;
+import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.UniformDistributedRandomNumberGenerator;
 import org.junit.Test;
 
 import java.util.Arrays;

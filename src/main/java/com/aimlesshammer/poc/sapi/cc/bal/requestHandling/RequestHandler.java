@@ -1,5 +1,7 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.requestHandling;
 
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BehaviourPolicyHeaders;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.SapiStubBehaviourPolicy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

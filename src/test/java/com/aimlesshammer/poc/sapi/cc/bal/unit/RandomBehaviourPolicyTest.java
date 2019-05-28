@@ -1,8 +1,8 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
-import com.aimlesshammer.poc.sapi.cc.bal.RandomBehaviourPolicy;
-import com.aimlesshammer.poc.sapi.cc.bal.RandomNumberGenerator;
-import com.aimlesshammer.poc.sapi.cc.bal.SapiStubBehaviourPolicy;
+import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.RandomBehaviourPolicy;
+import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.RandomNumberGenerator;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.SapiStubBehaviourPolicy;
 import org.junit.Test;
 import org.mockito.Mockito;
 

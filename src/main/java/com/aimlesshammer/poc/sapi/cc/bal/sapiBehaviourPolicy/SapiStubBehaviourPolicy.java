@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy;
 
 public interface SapiStubBehaviourPolicy {
     boolean shouldFail();
@@ -16,6 +16,4 @@ public interface SapiStubBehaviourPolicy {
     int getPerRequestMinDelay();
 
     int getPerRequestMaxDelay();
-
-    boolean isUsingDefaultBehaviour();
 }

@@ -1,14 +1,14 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
-import com.aimlesshammer.poc.sapi.cc.bal.BadlyFormattedSapiPolicyHeaderException;
-import com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BadlyFormattedSapiPolicyHeaderException;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
-import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

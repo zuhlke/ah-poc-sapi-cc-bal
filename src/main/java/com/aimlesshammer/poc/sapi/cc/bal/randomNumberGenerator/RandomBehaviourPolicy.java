@@ -1,16 +1,16 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator;
+
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.SapiStubBehaviourPolicy;
 
 public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     private final RandomNumberGenerator randomNumberGenerator;
     private int failureRate = 0;
     private int minDelay = 0;
     private int maxDelay = 0;
-    private boolean usingDefaultBehaviour = true;
 
     public RandomBehaviourPolicy(RandomNumberGenerator randomNumberGenerator) {
         this.randomNumberGenerator = randomNumberGenerator;
     }
-
     @Override
     public boolean shouldFail() {
         return randomNumberGenerator.randomPercent() < failureRate;
@@ -20,7 +20,6 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     public void setPerRequestDelayRange(int min, int max) {
         minDelay = min;
         maxDelay = max;
-        usingDefaultBehaviour = false;
     }
 
     @Override
@@ -37,7 +36,6 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
         failureRate = 0;
         minDelay = 0;
         maxDelay = 0;
-        usingDefaultBehaviour = true;
     }
 
     @Override
@@ -48,7 +46,6 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     @Override
     public void setFailureRate(int rate) {
         failureRate = rate;
-        usingDefaultBehaviour = false;
     }
 
     @Override
@@ -59,10 +56,5 @@ public class RandomBehaviourPolicy implements SapiStubBehaviourPolicy {
     @Override
     public int getPerRequestMaxDelay() {
         return maxDelay;
-    }
-
-    @Override
-    public boolean isUsingDefaultBehaviour() {
-        return usingDefaultBehaviour;
     }
 }

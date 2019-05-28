@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator;
 
 public interface RandomNumberGenerator {
     int randomPercent();

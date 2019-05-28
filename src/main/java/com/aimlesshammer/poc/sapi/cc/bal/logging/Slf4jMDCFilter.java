@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.logging;
 
 import org.slf4j.MDC;
 import org.springframework.util.StringUtils;

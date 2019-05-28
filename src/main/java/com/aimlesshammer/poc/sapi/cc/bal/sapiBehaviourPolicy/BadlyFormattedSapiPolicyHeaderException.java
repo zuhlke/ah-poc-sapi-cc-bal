@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy;
 
 public class BadlyFormattedSapiPolicyHeaderException extends Exception {
     public BadlyFormattedSapiPolicyHeaderException(NumberFormatException e) {

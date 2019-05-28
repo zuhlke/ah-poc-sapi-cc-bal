@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator;
 
 public class UniformDistributedRandomNumberGenerator implements RandomNumberGenerator {
     @Override

@@ -1,4 +1,4 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy;
 
 public class EmptyBehaviourPolicy implements BehaviourPolicyHeaders {
     @Override

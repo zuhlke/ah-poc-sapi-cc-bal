@@ -1,5 +1,10 @@
-package com.aimlesshammer.poc.sapi.cc.bal;
+package com.aimlesshammer.poc.sapi.cc.bal.requestHandling;
 
+import com.aimlesshammer.poc.sapi.cc.bal.PocSapiCreditCardBalancesApplication;
+import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.RandomBehaviourPolicy;
+import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.UniformDistributedRandomNumberGenerator;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BadlyFormattedSapiPolicyHeaderException;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BehaviourPolicyHeadersFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -9,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
-import static com.aimlesshammer.poc.sapi.cc.bal.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
+import static com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 
 @RestController
 public class SpringRestController {

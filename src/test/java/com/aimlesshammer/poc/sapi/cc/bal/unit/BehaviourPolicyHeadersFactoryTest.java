@@ -1,9 +1,9 @@
 package com.aimlesshammer.poc.sapi.cc.bal.unit;
 
-import com.aimlesshammer.poc.sapi.cc.bal.BadlyFormattedSapiPolicyHeaderException;
-import com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeaders;
-import com.aimlesshammer.poc.sapi.cc.bal.BehaviourPolicyHeadersFactory;
-import com.aimlesshammer.poc.sapi.cc.bal.SapiStubBehaviourPolicy;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BadlyFormattedSapiPolicyHeaderException;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BehaviourPolicyHeaders;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BehaviourPolicyHeadersFactory;
+import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.SapiStubBehaviourPolicy;
 import org.junit.Test;
 
 import java.util.HashMap;
