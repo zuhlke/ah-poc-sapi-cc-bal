@@ -4,7 +4,6 @@ import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.RandomBehaviourPo
 import com.aimlesshammer.poc.sapi.cc.bal.randomNumberGenerator.UniformDistributedRandomNumberGenerator;
 import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BadlyFormattedSapiPolicyHeaderException;
 import com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.BehaviourPolicyHeadersFactory;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,7 @@ import java.util.Map;
 
 @RestController
 public class SpringRestController {
-    private final SpringRestControllerLogger logger = new SpringRestControllerLogger(LoggerFactory.getLogger(SpringRestController.class));
+    private final SpringRestControllerLogger logger = new SpringRestControllerLogger();
     private final RequestHandler requestHandler = new RequestHandler(new RandomBehaviourPolicy(new UniformDistributedRandomNumberGenerator()));
 
     @GetMapping(path = "/customer/{customer-id}/balance", produces = MediaType.APPLICATION_JSON_VALUE)
