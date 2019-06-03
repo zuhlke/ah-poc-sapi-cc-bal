@@ -68,10 +68,10 @@ public class IntegrationTest {
 
         long difference = meanDelayedTime - meanNormalTime;
 
-        // The difference in the mean response times should be at least 80ms slower, and no more than 120ms slower
+        // The difference in the mean response times should be at least 70ms slower, and no more than 130ms slower
         // This has not been an exercise in science
-        assertThat(difference, greaterThan(80L));
-        assertThat(difference, lessThan(120L));
+        assertThat(difference, greaterThan(70L));
+        assertThat(difference, lessThan(130L));
     }
 
     @Test
