@@ -1,5 +1,8 @@
 language: java
 
+script:
+  - ./run-contract-tests.sh
+
 before_deploy:
   - mvn package -DskipTests=true
 

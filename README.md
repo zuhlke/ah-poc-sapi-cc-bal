@@ -21,6 +21,18 @@ Go via the pipeline by pushing to master.
 - Pipeline file is `.travis.yml`.
 - Environment variables are injected by travis.
 
+## Contract tests (WIP)
+
+- Clones the PAPI from GitHub
+- Builds the contract test executable using gradle
+- Executes the contract tests against itself, verifying that the contract is fulfilled.
+
+#### Notes
+
+- In the case of multiple consumers, this will need to be done for each of them.
+- In the case of the PAPI having multiple providers, it will need to either specify different executables, or allow the single executable to have its execution configured by an input parameter, so
+that each producer can run the appropriate tests against itself.
+
 ## SAPI behaviour Configurations
 
 - Send a request like `/failureRatePc/100` to set the failure rate. In this case, the failure rate is set to 100%. This will make every request return 500 INTERNAL SERVER ERROR.
