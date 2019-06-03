@@ -43,5 +43,4 @@ public class SpringRestController {
         logger.logResetBehaviourPolicy();
         return requestHandler.resetBehaviourPolicy();
     }
-
 }
