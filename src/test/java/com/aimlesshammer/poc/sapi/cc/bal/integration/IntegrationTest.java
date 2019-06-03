@@ -50,6 +50,8 @@ public class IntegrationTest {
 
     @Test
     public void canSetRandomDelayAt100ms() {
+        int delayAmountMs = 100;
+
         // Warm up
         springHttpClient.get(requestUrl);
         springHttpClient.get(requestUrl);
@@ -59,7 +61,7 @@ public class IntegrationTest {
         long normal_t3 = timedRequest();
         long meanNormalTime = (normal_t1 + normal_t2 + normal_t3) / 3;
 
-        springHttpClient.post(origin + "/perRequestDelayRangeMs?min=100&max=100");
+        springHttpClient.post(origin + "/perRequestDelayRangeMs?min=" + delayAmountMs + "&max=" + delayAmountMs);
 
         long delayed_t1 = timedRequest();
         long delayed_t2 = timedRequest();
