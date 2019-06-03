@@ -18,4 +18,6 @@ deploy:
   app_name: ah-poc-sapi-cc-bal # (optional)
 
 after_deploy:
-  - ./run-contract-tests.sh
+  - git clone https://github.com/zuhlke/ah-poc-papi-springboot.git
+  - cd ah-poc-papi-springboot/contract-tests
+  - ./bin/ah-poc-sapi-cc-bal
