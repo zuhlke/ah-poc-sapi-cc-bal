@@ -25,7 +25,8 @@ Go via the pipeline by pushing to master.
 
 - Clones the PAPI from GitHub
 - Builds the contract test executable using gradle
-- Executes the contract tests against itself, verifying that the contract is fulfilled.
+- Deploys itself to the PCF staging environment
+- Executes the contract tests against the version of itself deployed to staging, to verify that the contract is fulfilled
 
 #### Notes
 
