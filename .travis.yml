@@ -3,7 +3,6 @@ language: java
 script:
   - mvn clean
   - mvn test -B
-  - ./run-contract-tests.sh
 
 before_deploy:
   - mvn package -DskipTests=true
@@ -17,3 +16,6 @@ deploy:
   space: $PCF_SPACE
   manifest: manifest.yml # (optional)  Defaults to manifest.yml.
   app_name: ah-poc-sapi-cc-bal # (optional)
+
+after_deploy:
+  - ./run-contract-tests.sh
