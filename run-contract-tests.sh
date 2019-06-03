@@ -1,8 +1,8 @@
-echo "Running contract tests"
+# Assumption: The fixture has already been deployed to the "development" environment in PCF.
 
-# Assumption: the fixture has already been deployed to the "development" environment in PCF.
 # Clone PAPI repository
-# Run PAPI contract tests against dev
-
-echo "Done"
-exit 0
+git clone https://github.com/zuhlke/ah-poc-papi-springboot.git
+# Go to the contract tests
+cd ah-poc-papi-springboot/contract-tests
+# Run the tests designated for this SAPI against the deployed dev instance of it
+./bin/ah-poc-sapi-cc-bal
