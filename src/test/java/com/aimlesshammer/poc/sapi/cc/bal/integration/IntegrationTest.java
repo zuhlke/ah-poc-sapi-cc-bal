@@ -1,6 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.integration;
 
-import com.aimlesshammer.poc.sapi.cc.bal.SpringApplication;
+import com.aimlesshammer.poc.sapi.cc.bal.SpringbootApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,12 +24,12 @@ public class IntegrationTest {
 
     @Before
     public void beforeEach() {
-        SpringApplication.start(new String[]{});
+        SpringbootApplication.start(new String[]{});
     }
 
     @After
     public void afterEach() {
-        SpringApplication.stop(0);
+        SpringbootApplication.stop(0);
     }
 
     @Test

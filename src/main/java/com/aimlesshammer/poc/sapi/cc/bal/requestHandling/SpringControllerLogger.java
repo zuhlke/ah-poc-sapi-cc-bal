@@ -1,6 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.requestHandling;
 
-import com.aimlesshammer.poc.sapi.cc.bal.SpringApplication;
+import com.aimlesshammer.poc.sapi.cc.bal.SpringbootApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,10 +44,10 @@ public class SpringControllerLogger {
     }
 
     private String logMessageSingleArg(String msg) {
-        return SpringApplication.LOG_ID + ": " + msg + ": '{}'";
+        return SpringbootApplication.LOG_ID + ": " + msg + ": '{}'";
     }
 
     private String logMessageNoArgs(String msg) {
-        return SpringApplication.LOG_ID + ": " + msg;
+        return SpringbootApplication.LOG_ID + ": " + msg;
     }
 }
