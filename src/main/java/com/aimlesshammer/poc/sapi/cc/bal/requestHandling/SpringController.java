@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-public class SpringRestController {
-    private final SpringRestControllerLogger logger = new SpringRestControllerLogger();
+public class SpringController {
+    private final SpringControllerLogger logger = new SpringControllerLogger();
     private final RequestHandler requestHandler = new RequestHandler(new RandomBehaviourPolicy(new UniformDistributedRandomNumberGenerator()));
 
     @GetMapping(path = "/customer/{customer-id}/balance", produces = MediaType.APPLICATION_JSON_VALUE)

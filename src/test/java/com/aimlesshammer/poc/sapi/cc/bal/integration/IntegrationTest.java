@@ -1,6 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.integration;
 
-import com.aimlesshammer.poc.sapi.cc.bal.PocSapiCreditCardBalancesApplication;
+import com.aimlesshammer.poc.sapi.cc.bal.SpringApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,12 +24,12 @@ public class IntegrationTest {
 
     @Before
     public void beforeEach() {
-        PocSapiCreditCardBalancesApplication.start(new String[]{});
+        SpringApplication.start(new String[]{});
     }
 
     @After
     public void afterEach() {
-        PocSapiCreditCardBalancesApplication.stop(0);
+        SpringApplication.stop(0);
     }
 
     @Test

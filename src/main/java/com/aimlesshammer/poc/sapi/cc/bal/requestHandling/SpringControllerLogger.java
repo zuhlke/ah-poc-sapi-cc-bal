@@ -1,6 +1,6 @@
 package com.aimlesshammer.poc.sapi.cc.bal.requestHandling;
 
-import com.aimlesshammer.poc.sapi.cc.bal.PocSapiCreditCardBalancesApplication;
+import com.aimlesshammer.poc.sapi.cc.bal.SpringApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,8 +9,8 @@ import java.util.Map;
 import static com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders.X_POLICY_DELAY_RANGE_HEADER_NAME;
 import static com.aimlesshammer.poc.sapi.cc.bal.sapiBehaviourPolicy.CustomBehaviourPolicyHeaders.X_POLICY_FAILURE_RATE_HEADER_NAME;
 
-public class SpringRestControllerLogger {
-    private final Logger logger = LoggerFactory.getLogger(SpringRestController.class);
+public class SpringControllerLogger {
+    private final Logger logger = LoggerFactory.getLogger(SpringController.class);
 
     public void logBalance(Map<String, String> headers, String customerId) {
         log("Requesting balances for customer", customerId);
@@ -44,10 +44,10 @@ public class SpringRestControllerLogger {
     }
 
     private String logMessageSingleArg(String msg) {
-        return PocSapiCreditCardBalancesApplication.LOG_ID + ": " + msg + ": '{}'";
+        return SpringApplication.LOG_ID + ": " + msg + ": '{}'";
     }
 
     private String logMessageNoArgs(String msg) {
-        return PocSapiCreditCardBalancesApplication.LOG_ID + ": " + msg;
+        return SpringApplication.LOG_ID + ": " + msg;
     }
 }
